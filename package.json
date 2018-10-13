@@ -1,0 +1,26 @@
+{
+  "name": "vk-mail",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mantuciprian/VK-mail.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mantuciprian/VK-mail/issues"
+  },
+  "homepage": "https://github.com/mantuciprian/VK-mail#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "nodemon": "*",
+    "pg": "^7.5.0"
+  }
+}
