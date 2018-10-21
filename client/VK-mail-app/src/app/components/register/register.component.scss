@@ -1,0 +1,139 @@
+.login-container {
+    min-height: 100vh;
+    overflow: hidden;
+    position: relative;
+    img {
+        position: absolute;
+        width: 100%;
+        z-index: -1;
+        height: 100%;
+    }
+    .login-form {
+        width: 550px;
+        margin: 4% auto;
+        height: 1050px;
+        background-color: #FFFFFF;
+        border: 5px solid #FFFFFF;
+        border-radius: 17px;
+        position: relative;
+        .acc {
+          position: absolute;
+          bottom: 20px;
+          text-align: center;
+          margin: auto;
+          text-align: center;
+          width: 100%;
+          left: -20px;
+        }
+      .accout {
+          .ac {
+              padding: 5px;
+              font-family: Verdana, Geneva, Tahoma, sans-serif;
+          }
+      }
+    }
+    .login {
+        padding: 20px;
+        text-align: center;
+        font-size: 32px;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        color: rgba(58, 34, 163, 0.698);
+        font-weight: 700;
+    }
+    .input-holder {
+        position: relative;
+        .fiedError {
+            position: absolute;
+            text-align: center;
+            width: 90%;
+            color: red;
+            font-size: 16px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        .fieldHint {
+            color: rgba(58, 34, 163, 0.698);
+            position: absolute;
+            text-align: center;
+            width: 90%;
+            font-size: 16px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        .email {
+            position: absolute;
+            right: 20px;
+        }
+        .question {
+            width: 90%;
+            background-color: #FFFFFF;
+            border: none;
+            border-bottom: 1px solid rgba(58, 34, 163, 0.698);
+        }
+        .question:focus {
+            outline: none;
+        }
+        padding: 20px;
+        .username {
+            font-size: 18px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        .password-f {
+          text-align: right;
+          padding-right: 27px;
+          font-size: 14px;
+          font-family: Verdana, Geneva, Tahoma, sans-serif
+        }
+        .username-input {
+            text-align:center;
+            padding: 20px 0px;
+            position: relative;
+            .pers {
+              position: absolute;
+              top: 12px;
+            }
+            .password {
+              position: absolute;
+              top: 12px;
+              right: 26px
+              // color: rgb(255, 0, 0);
+            }
+            input {
+                width: 90%;
+                font-size: 16px;
+                text-align: center;
+                border: none;
+                border-bottom: 1px solid rgba(58, 34, 163, 0.698);
+            }
+            input:focus {
+                outline: transparent;
+            }
+        }
+        .login-button {
+            text-align: center;
+            padding: 10px;
+        .login-btn {
+             padding: 10px;
+             width: 70%;
+             border: 2px solid;
+             border-radius: 17px;
+             background-image: url('assets/bg-01.jpg');
+             font-size: 20px;
+             color: white;
+          }
+        }
+        .error-msg {
+            color:red;
+            font-size: 21px;
+            text-align: center;
+            padding: 20px;
+        }
+     
+    }
+  }
+  .red {
+      color: rgb(197, 33, 33);
+  }
+  @media screen and (max-width: 600px) {
+      .login-form {
+          max-width: 350px;
+      }
+    }

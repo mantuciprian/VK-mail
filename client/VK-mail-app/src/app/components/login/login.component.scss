@@ -63,7 +63,7 @@
           .password {
             position: absolute;
             top: 12px;
-            left: 26px
+            right: 26px
             // color: rgb(255, 0, 0);
           }
           input {
@@ -90,6 +90,20 @@
            color: white;
         }
       }
+      .error-msg {
+          color:red;
+          font-size: 21px;
+          text-align: center;
+          padding: 20px;
+      }
    
   }
 }
+.red {
+    color: rgb(197, 33, 33);
+}
+@media screen and (max-width: 600px) {
+    .login-form {
+        max-width: 350px;
+    }
+  }

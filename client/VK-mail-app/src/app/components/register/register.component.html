@@ -1,0 +1,76 @@
+<div class='login-container'>
+  <img src="assets/bg-01.jpg" alt=""/>
+  <form name="form" #f="ngForm" (submit) = "register($event, f)"  class='login-form'>
+    <div class='login'>Register</div>
+    <div class='input-holder'>
+     <div class='username'>Username</div>
+     <div class="username-input"><input (focus)="showUsernameHint()" (change)="usernameValidation($event)" (blur)="usernameValidation($event); hideUsernameHint()" ngModel #name="ngModel" name="username" type="text"/></div>
+     <div class='fiedError'>{{fieldsErrors[0]}}</div>
+     <div *ngIf="fieldsHints[0].showHint" class='fieldHint'>{{fieldsHints[0].hint}}</div>
+    </div>
+ 
+    <div class='input-holder'>
+       <div  class='username'>Password</div>
+       <div class="username-input">
+         <i (click)="showPassword()" [ngClass]="{'red': visiblePassword}" class="material-icons password">remove_red_eye</i>
+         <input  [maxlength]="30" (change)="passwordValidation($event)" (focus)="showPasswordnameHint()" (blur)="passwordValidation($event); hidePasswordHint()"  [(ngModel)]="passwordVal" #password="ngModel"  name="password" [type]="visiblePassword ? 'text': 'password'"/>
+       </div>
+       <div class='fiedError'>{{fieldsErrors[1]}}</div>
+       <div *ngIf="fieldsHints[1].showHint" class='fieldHint'>{{fieldsHints[1].hint}}</div>
+     </div>
+
+     <div class='input-holder'>
+      <div class='username'>Repeat Password</div>
+      <div class="username-input">
+        <i (click)="showPassword2()" [ngClass]="{'red': visiblePassword2}" class="material-icons password">remove_red_eye</i>
+        <input (focus)="showPassword2Hint()" (change)="password2Validation($event)" (blur)="password2Validation($event); hidePassword2Hint()" ngModel #password ="ngModel" name="password2" [type]="visiblePassword2 ? 'text': 'password'"/>
+      </div>
+      <div class='fiedError'>{{fieldsErrors[2]}}</div>
+      <div *ngIf="fieldsHints[2].showHint" class='fieldHint'>{{fieldsHints[2].hint}}</div>
+    </div>
+
+
+    <div class='input-holder'>
+      <div  class='username'>Email</div>
+      <div class="username-input">
+        <input (focus)="showEmailHint()" (change)="emailValidation($event)" (blur)="emailValidation($event); hideEmailHint()"  ngModel #password ="ngModel" name="email"/>
+        <span class='email'>@ VK.com</span>
+      </div>
+      <div class='fiedError'>{{fieldsErrors[3]}}</div>
+      <div *ngIf="fieldsHints[3].showHint" class='fieldHint'>{{fieldsHints[3].hint}}</div>
+    </div>
+
+    <div class='input-holder'>
+        <div  class='username'>Security question</div>
+        <div class="username-input">
+          <select (change) = "questionValidation($event)" (blur)="questionValidation($event)" class='question' ngModel #question ="ngModel" name="question" name="question" id="">
+              <option *ngFor="let question of securityQuestions" [value] ="question">{{question}}</option>
+          </select>
+        </div>
+        <div class='fiedError'>{{fieldsErrors[4]}}</div>
+     </div>
+
+     <div class='input-holder'>
+        <div  class='username'>Answare</div>
+        <div class="username-input">
+            <input (focus)="showAnswareHint()" (change)="answareValidation($event);" (blur)="answareValidation($event); hideAnswareHint()" ngModel #answare ="ngModel" name="answare"/>
+        </div>
+        <div class='fiedError'>{{fieldsErrors[5]}}</div>
+        <div *ngIf="fieldsHints[5].showHint" class='fieldHint'>{{fieldsHints[5].hint}}</div>
+     </div>
+ 
+     <div class='input-holder'>
+       <div class='login-button'><button type='submit' class='login-btn'>Register</button></div>  
+       <div *ngIf="isInvalid" class='error-msg'>Invalid username or password!</div>
+     </div>
+
+ 
+     <div class='input-holder acc'>
+         <div class='accout'>
+           <div class='ac'>Already have an account ?</div>
+           <div class='ac'>Login <u [routerLink]="['/login']"> here </u> !</div>
+         </div> 
+     </div>
+  </form>
+ </div>
+ 
