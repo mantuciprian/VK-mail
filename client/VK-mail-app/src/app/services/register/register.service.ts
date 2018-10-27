@@ -1,6 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
+interface RegisterRes {
+  message: string;
+  success: boolean;
+}
+
 @Injectable()
 export class RegisterService {
 
@@ -20,8 +25,8 @@ export class RegisterService {
 
   userRegister(userData) {
     const headers = new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded' });
-    return this._http.post('http://localhost:3000/register/register-user',
-    userData, {headers: headers, responseType: 'text'});
+    return this._http.post<RegisterRes>('http://localhost:3000/register/register-user',
+    userData, {headers: headers, responseType: 'json'});
   }
 
 }

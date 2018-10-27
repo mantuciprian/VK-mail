@@ -5,7 +5,7 @@ const pool = new Pool({
     host: 'localhost',
     database: 'VK_mail',
     password: 'ciprian',
-    port: 5433,
+    port: 5432,
 });
 
 module.exports = pool;

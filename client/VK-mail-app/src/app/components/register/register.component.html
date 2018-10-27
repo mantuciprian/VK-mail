@@ -29,6 +29,24 @@
       <div *ngIf="fieldsHints[2].showHint" class='fieldHint'>{{fieldsHints[2].hint}}</div>
     </div>
 
+    <div class='input-holder'>
+      <div class='username'>First Name</div>
+      <div class="username-input">
+        <input (focus)="showFirstNameHint()" (change)="firstNameValidation($event)" (blur)="firstNameValidation($event); hideFirstNameHint()" ngModel #first_name ="ngModel"  name="first_name" />
+      </div>
+      <div class='fiedError'>{{fieldsErrors[6]}}</div>
+      <div *ngIf="fieldsHints[6].showHint" class='fieldHint'>{{fieldsHints[6].hint}}</div>
+    </div>
+
+    <div class='input-holder'>
+      <div class='username'>Second Name</div>
+      <div class="username-input">
+        <input (focus)="showSecondNameHint()" (change)="secondNameValidation($event)" (blur)="secondNameValidation($event); hideSecondNameHint()" ngModel #second_name ="ngModel" name="second_name" />
+      </div>
+      <div class='fiedError'>{{fieldsErrors[7]}}</div>
+      <div *ngIf="fieldsHints[7].showHint" class='fieldHint'>{{fieldsHints[7].hint}}</div>
+    </div>
+
 
     <div class='input-holder'>
       <div  class='username'>Email</div>

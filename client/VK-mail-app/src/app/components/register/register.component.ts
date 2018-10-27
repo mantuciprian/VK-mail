@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RegisterService } from '../../services/register/register.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -14,7 +15,7 @@ export class RegisterComponent implements OnInit {
   fieldsErrors: string[];
   fieldsHints: any[];
   validationsStatus: boolean[];
-  constructor(private registerService: RegisterService) { }
+  constructor(private registerService: RegisterService, private router: Router) { }
 
   ngOnInit() {
     this.securityQuestions = [
@@ -29,8 +30,10 @@ export class RegisterComponent implements OnInit {
       {showHint: false, hint: 'Email adress mut be between 5 and 25 characters and do not include [@, !, ?] symbols or .com at the end'},
       {},
       {showHint: false, hint: 'Answare needs to between 5 and 40 characters'},
+      {showHint: false, hint: 'First name needs to have at last 3 characters and maximum 20 characters'},
+      {showHint: false, hint: 'Second name needs to have at last 3 characters and maximum 40 characters'}
     ];
-    this.fieldsErrors = ['', '', '', '', '', ''];
+    this.fieldsErrors = ['', '', '', '', '', '', '', ''];
     this.passwordVal = '';
     this.validationsStatus = [false, false, false, false, false, false];
   }
@@ -49,7 +52,9 @@ export class RegisterComponent implements OnInit {
     console.log(this.validationsStatus, isValid);
     if (isValid) {
       this.registerService.userRegister(form.value).subscribe((res) => {
-        console.log(res);
+        if (res.success === true ) {
+          this.router.navigate(['/login']);
+        }
       });
     }
   }
@@ -82,6 +87,18 @@ export class RegisterComponent implements OnInit {
     }
   }
 
+  showFirstNameHint() {
+    if (this.fieldsErrors[6] === '') {
+      this.fieldsHints[6].showHint = true;
+    }
+  }
+
+  showSecondNameHint() {
+    if (this.fieldsErrors[7] === '') {
+      this.fieldsHints[7].showHint = true;
+    }
+  }
+
   hideAnswareHint() {
       this.fieldsHints[5].showHint = false;
   }
@@ -100,6 +117,13 @@ export class RegisterComponent implements OnInit {
 
   hideEmailHint() {
     this.fieldsHints[3].showHint = false;
+  }
+
+  hideFirstNameHint() {
+    this.fieldsHints[6].showHint = false;
+  }
+  hideSecondNameHint() {
+    this.fieldsHints[7].showHint = false;
   }
 
   // validations
@@ -195,7 +219,7 @@ export class RegisterComponent implements OnInit {
       default:
       // this.fieldsErrors[3] = '';
       // check if the username is already taken
-      this.registerService.usernameAvailability({username: val}).subscribe((status) => {
+      this.registerService.emailAvailability({email: val}).subscribe((status) => {
         console.log('email passed is', status);
         if (status === 'invalid') {
           this.fieldsErrors[3] = 'Email is already taken!';
@@ -237,6 +261,42 @@ export class RegisterComponent implements OnInit {
       default:
           this.fieldsErrors[4] = '';
           this.validationsStatus[4] = true;
+      return;
+    };
+  }
+  firstNameValidation(ev) {
+    const val = ev.target.value;
+    // validate the value passed
+    switch (true) {
+      case val.length < 3:
+      this.fieldsErrors[6] = 'First name is too short';
+      this.validationsStatus[6] = false;
+      break;
+      case val.length > 20:
+      this.fieldsErrors[6] = 'First name is too long';
+      this.validationsStatus[6] = false;
+      break;
+      default:
+          this.fieldsErrors[6] = '';
+          this.validationsStatus[6] = true;
+      return;
+    };
+  }
+  secondNameValidation(ev) {
+    const val = ev.target.value;
+    // validate the value passed
+    switch (true) {
+      case val.length < 3:
+      this.fieldsErrors[7] = 'Second name is too short';
+      this.validationsStatus[7] = false;
+      break;
+      case val.length > 40:
+      this.fieldsErrors[7] = 'Second name is too long';
+      this.validationsStatus[7] = false;
+      break;
+      default:
+          this.fieldsErrors[7] = '';
+          this.validationsStatus[7] = true;
       return;
     };
   }
