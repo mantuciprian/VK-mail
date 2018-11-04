@@ -10,12 +10,16 @@ import { LoginComponent } from './components/login/login.component';
 import { LoginService } from './services/login/login.service';
 import { RegisterComponent } from './components/register/register.component';
 import { RegisterService } from './services/register/register.service';
+import { RegisterModalComponent } from './components/modal/register-modal/register-modal.component';
+import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    RegisterModalComponent,
+    ForgotPasswordComponent
   ],
   imports: [
     BrowserModule,

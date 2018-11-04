@@ -13,12 +13,12 @@
         <i (click)="showPassword()" [ngClass]="{'red': visiblePassword}" class="material-icons password">remove_red_eye</i>
         <input ngModel #password ="ngModel" name="password" [type]="visiblePassword ? 'text': 'password'"/>
       </div>
-      <div class='password-f'> <u>Forgot password ?</u> </div>
+      <div class='password-f'> <u [routerLink]="['/forgot-password']">Forgot password ?</u> </div>
     </div>
 
     <div class='input-holder'>
       <div class='login-button'><input type='submit' value='Login' class='login-btn'/></div>  
-      <div *ngIf="isInvalid" class='error-msg'>Invalid username or password!</div>
+      <div *ngIf="invalidLogin" class='error-msg'>Invalid username or password!</div>
     </div>
 
     <div class='input-holder acc'>

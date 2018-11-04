@@ -15,9 +15,11 @@ export class RegisterComponent implements OnInit {
   fieldsErrors: string[];
   fieldsHints: any[];
   validationsStatus: boolean[];
+  registered: boolean;
   constructor(private registerService: RegisterService, private router: Router) { }
 
   ngOnInit() {
+    this.registered = false;
     this.securityQuestions = [
       'What was the make of your first car ?',
       'What was your first pet?',
@@ -53,7 +55,7 @@ export class RegisterComponent implements OnInit {
     if (isValid) {
       this.registerService.userRegister(form.value).subscribe((res) => {
         if (res.success === true ) {
-          this.router.navigate(['/login']);
+          this.registered = true;
         }
       });
     }

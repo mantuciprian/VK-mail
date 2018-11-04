@@ -26,8 +26,22 @@ export class LoginComponent implements OnInit {
     this.visiblePassword = !this.visiblePassword;
   }
   login(ev, form) {
+    this.invalidLogin = false;
     ev.preventDefault();
     console.log(form.value);
+    this.loginService.userLogin(form.value).subscribe((res) => {
+      console.log('user logged in ', res);
+      // check the response
+      if (!res) {
+        console.log('user invalid');
+        this.invalidLogin = true;
+      } else {
+        console.log('welcome', res);
+        if ( res[0] === undefined ) {
+        this.invalidLogin = true;
+        };
+      };
+    });
   }
 
 }

@@ -1,0 +1,28 @@
+.modal {
+    max-width: 800px;
+    height: 350px;
+    margin: 0px 5px;
+    padding: 5px;
+    background-color: #FFFFFF;
+    border-radius: 27px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 10 !important;
+    .modal-msg {
+        text-align: center;
+        font-size: 28px;
+        .check {
+            font-size: 38px;
+            color: green;
+            padding: 5px;
+        }
+        .click {
+            font-size: 21px;
+        }
+        .here {
+            text-decoration: underline
+        }
+    }
+}
