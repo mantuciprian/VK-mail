@@ -12,6 +12,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { RegisterService } from './services/register/register.service';
 import { RegisterModalComponent } from './components/modal/register-modal/register-modal.component';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
+import { ForgotPasswordService } from './services/forgot-password/register.service';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,7 @@ import { ForgotPasswordComponent } from './components/forgot-password/forgot-pas
     AppRoutingModule,
     HttpClientModule
   ],
-  providers: [LoginService, RegisterService],
+  providers: [LoginService, RegisterService, ForgotPasswordService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

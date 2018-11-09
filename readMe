@@ -1,0 +1,3 @@
+psql -U postgres VK_mail < /Users/ciprianmantu/playground/VK-mail/DB/data-bases/VK_mail_backup_v1.0.1.sql
+
+use this command to backup the data
