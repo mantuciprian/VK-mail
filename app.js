@@ -6,6 +6,7 @@ const path = require('path');
 //external components
 const login = require('./routes/login/login');
 const register = require('./routes/register/register');
+const forgotPassword = require('./routes/forgot-password/forgot-password');
 
 const app = express();
 
@@ -19,7 +20,7 @@ app.use((req, res, next) => {
 
     // Website you wish to allow to connect
     res.setHeader('Access-Control-Allow-Origin', '*'); // '*' for all websites or specified eg:'http://localhost:4200'
-     
+
     res.setHeader('Access-Control-Request-Headers', '*');
 
     // Request methods you wish to allow
@@ -58,6 +59,9 @@ app.use(bodyParser.json())
 app.use('/login', login);
 //register route
 app.use('/register', register);
+//forgot password route
+app.use('/forgot-password', forgotPassword);
+
 app.get('/', (req, res) => {
    res.send('welcome to VK mail app!');
 });

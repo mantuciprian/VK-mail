@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ForgotPasswordService } from 'app/services/forgot-password/register.service';
 
 @Component({
   selector: 'app-forgot-password',
@@ -7,7 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ForgotPasswordComponent implements OnInit {
   securityQuestions: string[];
-  constructor() { }
+  errors : object[];
+  usernameCheck: any
+  constructor(private forgotPasswordService: ForgotPasswordService) { }
 
   ngOnInit() {
     this.securityQuestions = [
@@ -15,6 +18,14 @@ export class ForgotPasswordComponent implements OnInit {
       'What was your first pet?',
       'What was your birth place?'
     ];
+    this.usernameCheck = true;
+    this.forgotPasswordService.usernameCheck({username: 'ciprian'}).subscribe((res) => {
+      this.usernameCheck = res;
+    });
+    this.errors = [
+      {error : 'Username does not exist !'},
+      {error : 'Security question or answare is incorrect'}
+    ]
   }
 
 }
