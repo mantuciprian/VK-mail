@@ -15,8 +15,16 @@ export class ForgotPasswordService {
     return this._http.post('http://localhost:3000/forgot-password/username-check',
     username, {headers: headers, responseType: 'json'});
   }
-  test() {
-    console.log('Forgot pw works');
-   }
 
+  securityCheck(data) {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded' });
+    return this._http.post('http://localhost:3000/forgot-password/security-check',
+    data, {headers: headers, responseType: 'json'});
+  }
+
+  setNewPassword(password) {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded' });
+    return this._http.put('http://localhost:3000/forgot-password/change-password',
+    password, {headers: headers, responseType: 'json'});
+  }
 }
