@@ -21,7 +21,7 @@ export class RegisterComponent implements OnInit {
   ngOnInit() {
     this.registered = false;
     this.securityQuestions = [
-      'What was the make of your first car ?',
+      'What was the make of your first car?',
       'What was your first pet?',
       'What was your birth place?'
     ];
