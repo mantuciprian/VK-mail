@@ -1,3 +1,16 @@
 psql -U postgres VK_mail < /Users/ciprianmantu/playground/VK-mail/DB/data-bases/VK_mail_backup_v1.0.1.sql
 
 use this command to backup the data
+
+D:\programming\postress\bin>psql -U postgres -h localhost -p 5432 restore2  < D:\exportedDBs\todo_backup.sql
+
+1. D:\programming\postress\bin -- go using CMD ito this location
+
+2 D:\exportedDBs\todo_backup.sql --- location where my backup data is
+
+3. "restore2" is the name of my DB that I what to backup into.
+///////////////// steps to backup data 
+
+1. Go to the bin dir of postgres wising cmd (in my case D:\programming\postress\bin)
+ 
+2. run the command psql -U postgres -h localhost -p 5432 [<DB that I want to backup>] < [<backup db from the DB app folder>] 
