@@ -13,4 +13,10 @@ D:\programming\postress\bin>psql -U postgres -h localhost -p 5432 restore2  < D:
 
 1. Go to the bin dir of postgres wising cmd (in my case D:\programming\postress\bin)
  
-2. run the command psql -U postgres -h localhost -p 5432 [<DB that I want to backup>] < [<backup db from the DB app folder>] 
+2. run the command psql -U postgres -h localhost -p 5432 [<DB that I want to backup>] < [<backup the latest db from the data-bases app folder>] 
+
+3. go to connector-component folder end configure the connector.js with your local SQL server
+
+4. run npm install in /VK-mail and npm start to open the server on port 3000
+
+5. go to client , run npm install then npm start and open the client on port 4200
