@@ -32,12 +32,12 @@ export class LoginComponent implements OnInit {
     this.loginService.userLogin(form.value).subscribe((res) => {
       console.log('user logged in ', res);
       // check the response
-      if (!res) {
+      if (!res.user) {
         console.log('user invalid');
         this.invalidLogin = true;
       } else {
         console.log('welcome', res);
-        if ( res[0] === undefined ) {
+        if ( res === undefined ) {
         this.invalidLogin = true;
         };
       };

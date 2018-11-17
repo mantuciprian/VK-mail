@@ -7,14 +7,16 @@ import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/map';
 
 interface LoginRes {
-  id: number;
-  username: string;
-  password: string;
-  first_name: string;
-  second_name: string;
-  email: string;
-  security_question: string;
-  security_answare: string;
+  // id: number;
+  // username: string;
+  // password: string;
+  // first_name: string;
+  // second_name: string;
+  // email: string;
+  // security_question: string;
+  // security_answare: string;
+  user : object,
+  accessKey: string;
 }
 @Injectable()
 export class LoginService {
