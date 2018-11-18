@@ -23,22 +23,43 @@ const verifyToken = (req, res, next) => {
 
 
 //Routes
-router.get('/', (req, res) => {
+router.post('/inbox', verifyToken, (req, res) => {
+    
     const sender = res;
-    const request =async () => {
-        await pool.query('SELECT * from users' , (err, res) => {
-            if(err) {
-                console.log(err);
-                sender.send(err);
-                return;
-            } else {
-              const data = res.rows;
-              sender.send(data);
-            };
-          });
-     };
-    request();
+    const mailBoxId = req.body;
+    console.log('mailbox nr ', mailBoxId)
+    console.log(req.token)
+    jwt.verify(req.token, 'secretKey', (err, data) => {
+      if(err) {
+          res.sendStatus(403);
+      } else {
+        const request =async () => {
+            await pool.query(`SELECT * from mail WHERE mail.to = '${mailBoxId}'` , (err, res) => {
+                if(err) {
+                    console.log(err);
+                    sender.send(err);
+                    return;
+                } else {
+                  const data = res.rows;
+                  sender.send(data);
+                };
+              });
+         };
+        request();
+      };
+    })    
 });
+
+// router.get('/inbox', verifyToken, (req, res) => {
+//     jwt.verify(req.token, 'secretKey', (err, data) => {
+//       if(err) {
+//           res.sendStatus(403);
+//       } else {
+//           res.send('inbox messages')
+//       };
+//     })
+  
+//   });
 
 router.post('/login-user', (req, res) => {
     const sender = res;
@@ -73,16 +94,7 @@ router.post('/login-user', (req, res) => {
     }
 
 });
-router.get('/inbox', verifyToken, (req, res) => {
-  jwt.verify(req.token, 'secretKey', (err, data) => {
-    if(err) {
-        res.sendStatus(403);
-    } else {
-        res.send('inbox messages')
-    };
-  })
 
-});
 
 
 module.exports = router;

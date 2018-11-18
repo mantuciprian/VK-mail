@@ -1,0 +1,17 @@
+<div class='navbar'>
+    <div class='vk-logo'><img [width]='40' [height]='40' src="assets/vk.png" alt=""></div>
+</div>
+<div class='body-holder'>
+    <div class='left-menu'>
+        <div [routerLink]="['/home', 'inbox']" class='section inbox'> <i class="material-icons">mail</i> Inbox</div>
+        <div [routerLink]="['/home', 'compose']" class='section compose'> <i class="material-icons">border_color</i> Compose</div>
+    </div>
+    <div class='menu-section'>
+        <router-outlet></router-outlet>
+    </div>
+</div>
+
+<p>
+ {{checkUser? 'welcome ' + checkUser.user.first_name : 'Please login !'}}
+</p>
+<button (click)='logOut()'>Logout</button>

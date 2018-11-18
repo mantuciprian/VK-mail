@@ -13,6 +13,10 @@ import { RegisterService } from './services/register/register.service';
 import { RegisterModalComponent } from './components/modal/register-modal/register-modal.component';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { ForgotPasswordService } from './services/forgot-password/register.service';
+import { HomeComponent } from './components/home/home.component';
+import { InboxService } from './services/inbox/inbox.service';
+import { InboxComponent } from './components/inbox/inbox.component';
+import { ComposeComponent } from './components/compose/compose.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +24,10 @@ import { ForgotPasswordService } from './services/forgot-password/register.servi
     LoginComponent,
     RegisterComponent,
     RegisterModalComponent,
-    ForgotPasswordComponent
+    ForgotPasswordComponent,
+    HomeComponent,
+    InboxComponent,
+    ComposeComponent
   ],
   imports: [
     BrowserModule,
@@ -30,7 +37,7 @@ import { ForgotPasswordService } from './services/forgot-password/register.servi
     AppRoutingModule,
     HttpClientModule
   ],
-  providers: [LoginService, RegisterService, ForgotPasswordService],
+  providers: [LoginService, RegisterService, ForgotPasswordService, InboxService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

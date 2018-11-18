@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {NgForm} from '@angular/forms';
 import {LoginService} from '../../services/login/login.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -11,9 +11,10 @@ import { ActivatedRoute } from '@angular/router';
 export class LoginComponent implements OnInit {
   visiblePassword: boolean;
   invalidLogin: boolean;
-  constructor(private loginService: LoginService, private route: ActivatedRoute) { }
+  constructor(private loginService: LoginService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
+  console.log('local storage user: ', localStorage.getItem('vkuser'));
    this.visiblePassword = false;
    this.invalidLogin = false;
   //  this.loginService.say();
@@ -36,9 +37,12 @@ export class LoginComponent implements OnInit {
         console.log('user invalid');
         this.invalidLogin = true;
       } else {
-        console.log('welcome', res);
         if ( res === undefined ) {
-        this.invalidLogin = true;
+          this.invalidLogin = true;
+        } else {
+          console.log('welcome', res);
+          localStorage.setItem('vkuser', JSON.stringify(res));
+          this.router.navigate(['/home', 'inbox']);
         };
       };
     });

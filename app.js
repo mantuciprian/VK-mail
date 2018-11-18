@@ -7,6 +7,7 @@ const path = require('path');
 const login = require('./routes/login/login');
 const register = require('./routes/register/register');
 const forgotPassword = require('./routes/forgot-password/forgot-password');
+const inbox = require('./routes/inbox/inbox');
 
 const app = express();
 
@@ -27,7 +28,7 @@ app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
 
     // Request headers you wish to allow
-    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With, Content-Type');
+    res.setHeader('Access-Control-Allow-Headers', 'Authorization', 'X-Requested-With, Content-Type', 'Origin','Accept');
 
     // Set to true if you need the website to include cookies in the requests sent
     // to the API (e.g. in case you use sessions)
@@ -61,13 +62,12 @@ app.use('/login', login);
 app.use('/register', register);
 //forgot password route
 app.use('/forgot-password', forgotPassword);
+//forgot inbox route
+app.use('/inbox', inbox);
 
 app.get('/', (req, res) => {
    res.send('welcome to VK mail app!');
 });
-
-
-
 
 app.listen(port, () => {
  console.log('app is running on port: ' + port);
