@@ -1,3 +1,9 @@
-<p>
-  inbox works!
-</p>
+<div class='inboxList'>
+  <div *ngFor = "let mail of inboxList">
+    <div class='mail'>
+      <div class='subject'>Subject: {{mail.subject}}</div>
+       <div class='from'>From: {{mail.from_name}}</div>
+       <div class='date'>{{mail.date | date}}</div>
+    </div>
+  </div>
+</div>
