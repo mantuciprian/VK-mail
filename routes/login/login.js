@@ -48,7 +48,7 @@ router.post('/login-user', (req, res) => {
         sender.send(false)
     }else {
         const request =async () => {
-            await pool.query(`SELECT users.id, 
+            await pool.query(`SELECT users.id,
             users.username,
             users.first_name
              from users WHERE users.username = '${data.username}' AND users.password = '${data.password}'` , (err, res) => {
@@ -58,7 +58,7 @@ router.post('/login-user', (req, res) => {
                     return;
                 } else {
                   // send user info
-                  jwt.sign({user: data}, 'secretKey',{expiresIn:'30s'}, (err, token) => {
+                  jwt.sign({user: data}, 'secretKey',{expiresIn: 60*10}, (err, token) => {
                       if(res.rows[0].username) {
                         const data = res.rows[0];
                         sender.send({user : data, accessKey: token});

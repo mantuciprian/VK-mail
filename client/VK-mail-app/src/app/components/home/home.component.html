@@ -5,6 +5,8 @@
     <div class='left-menu'>
         <div [routerLink]="['/home', 'inbox']" class='section inbox'> <i class="material-icons">mail</i> Inbox</div>
         <div [routerLink]="['/home', 'compose']" class='section compose'> <i class="material-icons">border_color</i> Compose</div>
+        <div [routerLink]="['/home', 'settings']" class='section compose'> <i class="material-icons">settings</i> Settings</div>
+        <div (click)='logOut()' class='section compose'> <i class="material-icons">logout</i> Logout</div>
     </div>
     <div class='menu-section'>
         <router-outlet></router-outlet>
@@ -14,4 +16,3 @@
 <p>
  {{checkUser? 'welcome ' + checkUser.user.first_name : 'Please login !'}}
 </p>
-<button (click)='logOut()'>Logout</button>

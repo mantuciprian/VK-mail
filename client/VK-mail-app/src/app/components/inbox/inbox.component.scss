@@ -1,0 +1,21 @@
+.mail {
+    display: flex;
+    border-bottom: 1px solid aqua;
+    height: 65px;
+    padding: 5px;
+    box-sizing: border-box;
+    flex-direction: column;
+    align-content: center;
+    position: relative;
+    .subject {
+        margin:5px 0px;
+    }
+    .from {
+        margin:5px 0px;
+    }
+}
+.date {
+    position: absolute;
+    right: 20px;
+    bottom: 5px;
+}
